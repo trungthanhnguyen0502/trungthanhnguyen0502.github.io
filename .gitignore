@@ -2,3 +2,7 @@ node_modules
 _site
 .sass-cache
 .ipynb_checkpoints
+assets_draft
+_posts_draft
+trung_draft_post
+
