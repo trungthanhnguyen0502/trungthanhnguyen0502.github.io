@@ -1,0 +1,171 @@
+I"|1<h1 id="1-google-colab">1. Google Colab</h1>
+
+<p>Làm việc với Deep Learning nghĩa là bạn phải nghiên cứu và xây dựng các model, đòi hỏi máy tính phải có khả năng tính toán lớn. Quá trình training model - hay huấn luyện mô hình thường cần tới GPU. Ngày nay, không nhất thiết phải sắm máy tính với GPU đắt tiền, ta hoàn toàn có thể đăng kí các dịch vụ <strong>Cloud Computing</strong> của Google, Amazon và nhiêù nhà cung cấp khác. Bài này sẽ hướng dẫn cách sử dụng <strong>GPU miễn phí</strong> trên Google Colab.</p>
+
+<p>Google Colab cung cấp <strong>Colaboratory notebooks</strong> - 1 dạng tương tự như jupyter notebook. Khi tạo 1 notebook, một môi trường ảo sẽ được tạo riêng cho từng người dùng với đầy đủ những tính năng cơ bản, folder, package, pythonlib. Trong khi code, thiếu lib nào ta có thể <strong>pip install</strong> như khi sử dụng trên máy vật lý. Colab hỗ trợ khá toàn diện các pythonlib với version mới nhất tensoflow, keras, PyTorch, cv2 …</p>
+
+<p>Lưu ý là bạn chỉ có thể train tối đa 12 tiếng liên tục. Nhớ thường xuyên lưu model khi train tránh việc hết 12h hoặc mất mạng, khi đó bạn sẽ phải train lại từ đầu.</p>
+
+<p><img src="https://images.viblo.asia/4ab2c6f8-ee7d-40d3-a813-26c6c7d3739a.png" alt="" /></p>
+
+<blockquote>
+  <p><strong>H1</strong>:  Tesla K80 GPU - GPU thường được assign trên Google Colab</p>
+</blockquote>
+
+<h1 id="2-cài-đặt">2. Cài đặt.</h1>
+<h2 id="21-tạo-notebook">2.1 Tạo notebook</h2>
+
+<ol>
+  <li>
+    <p>Đăng nhập Drive, tạo 1 thư mục bất kì, (VD: AI_COLAB ), vào thư mục</p>
+  </li>
+  <li>Chuột phải, chọn <strong>More $\longrightarrow$ Colaboratory</strong>. Như vậy ta đã tạo ra 1 notebook.</li>
+  <li>Click vào notebook vừa tạo, giao diện hiện ra khá giống với Jupyter notebook.</li>
+</ol>
+
+<p><img src="https://images.viblo.asia/604ed860-789b-4b73-9397-0f42edd2e1c9.jpeg" alt="" /></p>
+<blockquote>
+  <p><strong>H2</strong>: Tạo Colab notebook</p>
+</blockquote>
+
+<h2 id="22-cài-đặt-gpu">2.2 Cài đặt GPU</h2>
+<p>Khi làm việc, không phải lúc nào cũng cần phải dùng tới GPU, nên theo cấu hình mặc định chỉ có CPU. Trong trường hợp train/inference model cần tới GPU, ta làm theo bước sau:</p>
+
+<p><strong>Edit $\longrightarrow$ Notebook Settings $\longrightarrow$</strong> chọn <strong>Hardware GPU</strong></p>
+
+<p><img src="https://images.viblo.asia/fc69fbfb-f436-491f-b5a5-b547d1609caa.png" alt="" /></p>
+<blockquote>
+  <p><strong>H3</strong>: Setting GPU trên colab notebook</p>
+</blockquote>
+
+<h2 id="23-mount-drive">2.3 Mount drive</h2>
+
+<p>Mặc định Colab notebook sẽ không có quyền truy cập, đọc ghi bất kì file nào trên Drive. Tuy nhiên trong thực tế, khi train model ta cần 1 nơi chứa dataset dùng để train model. Đó có thể là Google Drive, Kaggle, Dropbox…  Việc này không bắt buộc nhưng cần thiết nếu bạn cần 1 nơi save model và dataset. Trong bài này, để đơn giản mình sẽ hướng dẫn cách Mount Drive:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/content/drive'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>Khi run 2 dòng code trên, notebook sẽ xuất hiện 1 đường link đi kèm với 1 ô nhập token.</li>
+  <li>Click vào link, tiến hành cấp quyền truy cập Drive.</li>
+  <li>Cấp quyền xong sẽ hiện ra 1 đoạn token. Copy token đó và điền vào ô input trên notebook, nhấn Enter.</li>
+  <li>Như vậy bạn đã hoàn thành việc cấp quyền cho google colab được phép truy cập vào drive của bạn (quyền đọc và ghi dữ liệu).</li>
+</ul>
+
+<p>Để thấy được những folder, file đã được add từ drive vào môi trường máy ảo này, mở cửa sổ bên trái, click vào <strong>Files $\longrightarrow$ Refresh</strong>, bạn sẽ thấy Drive của bạn đã được thêm vào working directory</p>
+
+<h2 id="24-thử-nghiệm">2.4 Thử nghiệm</h2>
+
+<p>Mình sẽ tạo notebook, viết 1 đoạn code tạo model với tensorflow để xem code có hoạt động bình thường như trên máy vật lí không nhé. Trước hết tạo notebook, tiến hành Setup GPU như hướng dẫn trên.</p>
+
+<p>Code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> 
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span> 
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">(),</span> 
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span> 
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'sigmoid'</span><span class="p">)</span>  
+<span class="p">])</span>
+
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="c1"># Model: "sequential"
+# _________________________________________________________________
+# Layer (type)                 Output Shape              Param #   
+# =================================================================
+# conv2d (Conv2D)              (None, 148, 148, 16)      448       
+# _________________________________________________________________
+# max_pooling2d (MaxPooling2D) (None, 74, 74, 16)        0         
+# _________________________________________________________________
+# conv2d_1 (Conv2D)            (None, 72, 72, 32)        4640      
+# _________________________________________________________________
+# max_pooling2d_1 (MaxPooling2 (None, 36, 36, 32)        0         
+# _________________________________________________________________
+# conv2d_2 (Conv2D)            (None, 34, 34, 64)        18496     
+# _________________________________________________________________
+# max_pooling2d_2 (MaxPooling2 (None, 17, 17, 64)        0         
+# _________________________________________________________________
+# flatten (Flatten)            (None, 18496)             0         
+# _________________________________________________________________
+# dense (Dense)                (None, 512)               9470464   
+# _________________________________________________________________
+# dense_1 (Dense)              (None, 1)                 513       
+# =================================================================
+# Total params: 9,494,561
+# Trainable params: 9,494,561
+# Non-trainable params: 0
+# _________________________________________________________________
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">tf</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">is_gpu_available</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Test model with fake data "</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">3</span><span class="p">))))</span>
+
+<span class="c1"># True
+# Test model with fake data  [[0.5]]
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p>Như vậy, qua vài dòng code cơ bản, ta có thể thấy code run không khác gì khi run với jupyter thông thường. Dịch vụ này của google colab khá hay và tiện, đặc biệt hữu ích phục vụ quá trình tự nghiên cứu và học AI.</p>
+:ET

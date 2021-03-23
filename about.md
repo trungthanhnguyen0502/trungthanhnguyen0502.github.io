@@ -4,7 +4,7 @@ title: About
 ---
 # Giới thiệu
 
-<p>Tôi là Phạm Đình Khánh.</p>
+<!-- <p>Tôi là Phạm Đình Khánh.</p>
 <p>
 Hiện tại tôi là một data scientist đang công tác tại công ty VinID.
 Nhiều bạn thắc mắc công việc chính hàng ngày của tôi là gì? Nhân tiện, tôi cũng muốn chia sẻ với các bạn công việc của một data scientist ở tập đoàn tôi đang làm sẽ như thế nào?
@@ -37,4 +37,4 @@ Hi vọng nhỏ bé của tôi là blog của mình sẽ mang lại giá trị h
 Mọi ý kiến đóng góp về blog xin vui lòng post lên group
 <a href="https://www.facebook.com/groups/3235479620010379/">AICode</a>.
 Tôi xin cảm ơn bạn đọc đã ủng hộ và theo dõi các bài viết tại Khanh's Blog.
-</p>
+</p> -->

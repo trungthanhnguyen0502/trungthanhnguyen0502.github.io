@@ -147,3 +147,11 @@ img.tiny {
 #myBtn:hover {
   background-color: #555;
 }
+
+img {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: auto;
+  height: auto; */
+}

@@ -1,0 +1,168 @@
+I"�*<div class="imgcap">
+    <div>
+        <img src="/assets/3-entropy/entropy_background.png" width="400" />
+    </div>
+    <div class="thecap">H1: Lý thuyết thông tin </div>
+</div>
+<hr />
+
+<p><a name="--information-theory-and-entropy"></a></p>
+
+<h2 id="1-cơ-bản-về-lý-thuyết-thông-tin-và-khái-niệm-entropy">1. Cơ bản về lý thuyết thông tin và khái niệm entropy</h2>
+
+<!-- What is entropy -->
+<p><a name="-what-is-entropy"><a></a></a></p>
+
+<h3 id="11-entropy-nghĩa-là-gì">1.1 Entropy nghĩa là gì?</h3>
+
+<p>Ý tưởng về Entropy ban đầu khá khó hiểu, có khá nhiều từ được dùng để mô tả nó: đó là sự hỗn loạn, không chắc chắc, độ bất định, độ bất ngờ, lượng thông tin hay những định nghĩa tương tự thế. Nếu cho đến giờ bạn vẫn chưa rõ về nó, thì bạn tới đúng nơi rồi đấy. Tôi sẽ giúp bạn hiểu rõ về Entropy.</p>
+
+<div class="imgcap">
+<div>
+   <img src="/assets/3-entropy/shanon.jpg" width="300" />
+</div>
+<div class="thecap">H2: Cha đẻ của Lý thuyết thông tin: Claude Shannon </div>
+</div>
+
+<!-- Nguồn gốc entropy -->
+<p><a name="-entropy-root"></a></p>
+
+<h3 id="12-ai-nghĩ-ra-entropy-và-vì-lý-do-gì-">1.2 Ai nghĩ ra Entropy và vì lý do gì ?</h3>
+<p>Năm 1948, Claude Shannon lần đầu nhắc tới khái niệm information entropy trong bài viết ““A Mathematical Theory of Communication”. Nhiều người dịch information entropy là entropy thông tin, độ bất định thông tin - tuy nhiên mình nghĩ dùng từ gốc sẽ tốt hơn vì dân lập trình thì nên làm quen với các khái niệm tiếng Anh hơn.</p>
+
+<p>Shannon đã nghiên cứu về cách để truyền tin hiệu quả mà không bị mất mát thông tin. Khi một thông tin được truyền đi giữa các nơi, nó cần mã hoá thành 1 cấu trúc dữ liệu nhỏ nhất. Đồng thời, việc mã hóa đó không được phép làm mất, sai lệch thông tin nơi nhận. Bộ giải mã nơi nhận phải có khả năng khôi phục lại thông tin giống như thông tin gốc. Và như vậy ta cần một cơ chế hay độ đo để đánh giá độ hiệu quả của việc mã hoá này.</p>
+
+<div class="imgcap">
+<div>
+   <img src="/assets/3-entropy/entropy-1.png" width="500" />
+</div>
+</div>
+
+<p>Shannon đã định nghĩa Entropy là kích cỡ trung bình nhỏ nhất có thể của các message được gửi đi từ nguồn tới đích khi mã hoá, việc mã hoá này phải đảm bảo không mất mát thông tin. Ông đã mô tả cách để tính entropy - rất hữu ích trong việc tính toán hiệu quả của kênh truyền dữ liệu. Định nghĩa trên đây có lẽ vẫn chưa rõ ràng với bạn nhỉ. Tôi sẽ mô tả vài ví dụ cho bạn hiểu.</p>
+
+<!-- Entropy detail -->
+<p><a name="-entropy-detail"></a></p>
+
+<h2 id="2-đi-vào-chi-tiết-entropy">2. Đi vào chi tiết entropy</h2>
+
+<p><a name="-encoding"></a></p>
+
+<h3 id="21-mã-hóa-thông-tin">2.1 Mã hóa thông tin.</h3>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-2.png" width="500" />
+    </div>
+</div>
+<hr />
+
+<p>Giả sử bạn muốn truyền 1 message từ Tokyo tới New York với nội dung về thời tiết của Tokyo. Cách ở trên có tốt không ? Giả sử cả người gửi và nhận đều biết rằng nội dung message đều nói về thời tiết của Tokyo. Vậy họ sẽ không cần phải gửi những từ như “Thời tiết”, “Tokyo”, “của” … Họ đơn giản chỉ cần nói “Fine”, “Not fine”, như vậy là đủ.</p>
+
+<p>Mã hóa với 2 loại message “fine”, “not fine”như vậy tốt chưa ? Chưa, bởi vì câu hỏi dạng “yes”, “no”, ta chỉ cần 1 bit để mã hóa: giá trị 0 cho “Fine”, 1 cho “Not fine”.</p>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-3.png" width="500" />
+    </div>
+</div>
+<hr />
+
+<p>Như vậy cách mã hóa này đã đảm bảo không làm mất mát thông tin. Thế bây giờ ta muốn nói thêm về mưa, tuyết (Rainy, Cloudy) thì sao ? 1 bit sẽ không đủ để mã hóa số trường hợp đó. Thế ta thử 2 bit:</p>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-4.png" width="500" />
+    </div>
+</div>
+<hr />
+
+<p>“Fine” là 00, tuy nhiên ta có thể rút gọn nó thành 0 vì 2 trường hợp còn lại đều bắt đầu bằng số 1. Do “Not fine” đã bao trùm các trường hợp còn lại (khác “fine”) nên ta có thể bỏ. Nếu thêm “Snow” vào, ta có thể mã hóa như sau:</p>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-5.png" width="500" />
+    </div>
+</div>
+<hr />
+
+<p>Như vậy, chúng ta đã hiểu việc mã hóa bằng các bit 0-1 là như nào rồi nhé. Tiếp đến, chúng ta cần biết liệu cách mã hóa như trên đã tối ưu chưa.</p>
+<hr />
+
+<!-- 2.2 Tính kích cỡ mã hóa trung bình.-->
+<p><a name="-encode-average-size"></a></p>
+
+<h3 id="22-kích-cỡ-mã-hóa-trung-bình">2.2 Kích cỡ mã hóa trung bình.</h3>
+<p>Giả sử Tokyo liên tục gửi thông tin về thời tiết tới New York hằng giờ với cách mã hóa như đã nói trên. Sau khi thu thập, tổng hợp thông tin, ta có 1 phân phối xác suất về tần suất gửi với từng loại thông tin như sau:</p>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-6.png" width="500" />
+    </div>
+</div>
+<hr />
+
+<p>Dựa vào tần suất và bảng mã hoá, ta tính số bit trung bình của một tin nhắn là:</p>
+
+\[(0.6 * 1 )+(0.38*2)+(0.01 * 3)+(0.01 * 3)=1.42\]
+
+<p>Như vậy, với cách bảng mã hoá trên, trung bình mỗi tin nhắn gửi đi dài 1.42 bit. Bạn có thể thấy, giá trị trung bình này phụ thuộc vào cả phân phối xác suất và cách mã hóa mỗi 1 loại tin. Ví dụ, trong trường hợp phân phối xác suất thay đổi: Fine = 10%, Cloudy = 10%, Rainy = 40%, Snow = 40%, độ dài trung bình mỗi tin nhắn là :</p>
+
+\[(0.1*1) + ( 0.1 * 2)+(0.4 * 3 )+(0.4 * 3) = 2.7\]
+
+<p>Như vậy, chúng ta đã biết cách tính độ dài mã hóa trung bình rồi, nhưng làm cách nào để biết giá trị này đã là nhỏ nhất hay chưa, nói cách khác liệu cách mã hóa của chúng ta đã tối ưu hay chưa.</p>
+<hr />
+
+<!--  -->
+<p><a name="-encode-min-average-size"></a></p>
+
+<h3 id="23-kích-cỡ-mã-hóa-trung-bình-nhỏ-nhất">2.3 Kích cỡ mã hóa trung bình NHỎ NHẤT.</h3>
+<p>Ta có thể thử nhiều bảng mã hoá khác nhau và ngồi tính tay ra độ dài mã hóa trung bình của từng trường hợp rồi chọn xem cách nào cho độ dài nhỏ nhất… Tuy nhiên cách này chắc chắn không ổn. Vậy nếu ta có 1 phân phối xác suất của dữ liệu, có cách nào để tính luôn ra độ dài trung bình nhỏ nhất hay không?</p>
+
+<p>Ta có thể xác định số bit mã hoá cho 1 loại message dựa vào tần suất xuất hiện của nó. Cụ thể: loại message nào xuất hiện với tần suất càng lớn, số bit mã hoá cho nó trong bảng mã hoá càng phải nhỏ. Tức số bit mã hoá cho 1 message tỷ lệ nghịch với tần suất xuất hiện của nó.</p>
+
+<p>Giả sử ta có 8 kiểu tin nhắn khác nhau cùng xuất hiện với xác suất \(p=1/8 = 12.5%\). 1 bit thì mã hóa được 2 giá trị. thế 2 bit mã hóa  được 4, 3 bit được 8 giá trị. Như vậy ta chỉ cần 3 bit là mã hóa được, thêm 1 bit vào cũng không có thêm tác dụng gì. Thông thường, với N giá trị, ta cần   \(\log_2^N\) bit để mã hóa. Với 1 loại tin nhắn xuất hiện 1 trong N lần gửi tin, công thức bên trên mô tả kích cỡ tối thiểu cần thiết để mã hóa.
+Và vì \(P = \frac{1}{N}\) là xác suất của loại tin nhắn đó, phương trình có thể viết lại thành</p>
+
+\[\log_2^N = -\log_2^{1/N} = -\log_2^{p}\]
+
+<p>Như vậy \(-\log_2^{P}\) là số bit tối thiểu để mã hoá 1 message với xác suất xuất hiện \(p\)</p>
+
+<p>Kết hợp với công thức tính kích cỡ trung bình đã biết ở phần trước, ta được kích thước trung bình tối thiểu của 1 message được gửi đi khi biết tần suất xuất hiện từng loại message - đây chính là entropy:</p>
+
+\[Entropy = -\sum_{i}^{n} p_i * \log_2^{p_i}\]
+
+<p>Trong đó \(p_i\) là xác suất của loại tin nhắn thứ i. Hãy ngồi và suy ngẫm về công thức này, không có gì magic ở đây cả, công thức này đơn giản là sự kết hợp giữa tính kích cỡ mã hóa trung bình và kích cỡ mã hóa nhỏ nhất của từng loại tin. Thử 1 vài ví dụ:</p>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-7.png" width="500" />
+    </div>
+</div>
+
+<div class="imgcap">
+    <div>
+    <img src="/assets/3-entropy/entropy-8.png" width="500" />
+    </div>
+</div>
+
+<p>Vậy, entropy là: \((0.5 * 1)+(0.25 * 2)+(0.125 * 3)+(0.125 * 3)=1.75\) bits</p>
+<hr />
+
+<!-- Tính chất entropy ########### -->
+<p><a name="-entropy-property"></a></p>
+
+<h3 id="24-tính-chất-của-entropy">2.4 Tính chất của Entropy</h3>
+
+<p>Với công thức tính entropy ở trên, entropy được tính hoàn toàn dựa vào xác suất. Giả sử với phân phối xác suất về thời tiết (mưa, nắng) là P = {p1, p2}. Người ta nhận ra Entropy(P) đạt max khi p1=p2. Khi p1 và p2 càng lệch nhau thì Entropy(P) càng giảm. Nếu p1=p2=0.5, entropy đạt max, ta rất khó để đoán thời tiết ngày mai mưa hay nắng. Nếu p1=0.1 và p2=0.9, ta sẽ tự tin đoán rằng ngày mai trời sẽ nắng, lúc này entropy có giá trị thấp hơn nhiều.</p>
+
+<p>Entropy cao đồng nghĩa với việc ta khó đoán trước được sự kiện sắp xảy ra. Ta có thể gọi đó là sự bất định, sự bất ổn hay entropy là 1 thước đo sự “khó đoán” của thông tin sắp xảy ra trong tương lai theo 1 phân phối xác suất.</p>
+
+<p>Entropy được sử dụng nhiều trong lĩnh vực Machine learning, Deep learning. Tiêu biểu là <strong>cross entropy</strong> trong Loss function và thuật toán <strong>Infomation Gain</strong> trong thuật toán Cây quyết định.</p>
+
+<p><a name="-refer"></a></p>
+
+<h3 id="3-tài-liệu-tham-khảo">3. Tài liệu tham khảo</h3>
+<ol>
+  <li><a href="https://towardsdatascience.com/demystifying-entropy-f2c3221e2550">Demystifying entropy</a></li>
+</ol>
+:ET

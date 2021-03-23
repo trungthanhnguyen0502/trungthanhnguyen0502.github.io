@@ -1,0 +1,139 @@
+I"�<ul>
+  <li><a href="#-1">1. Vấn đề của YOLO</a></li>
+  <li><a href="#-2">2. Ý tưởng YOLO-v2 </a></li>
+  <li><a href="#-3">3. Chi tiết thuật toán</a>
+    <ul>
+      <li><a href="#-3.1">3.1 Thuật toán</a></li>
+      <li><a href="#-3.2">3.2 Cách xác định Anchor box</a></li>
+      <li><a href="#-3.2">3.3 Loss function</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- ############ -->
+<p><a name="-1"></a></p>
+
+<h2 id="1-vấn-đề-của-yolo">1. Vấn đề của YOLO</h2>
+<p>Trong bài trước, mình đã nói chi tiết về thuật toán yolo - thuật toán mạnh mẽ để giải quyết vấn đề real-time của bài toán object detect. Tuy nhiên, yolo vẫn có một vài nhược điểm:</p>
+<ul>
+  <li>Khi so sánh kết quả trong các cuộc thi, người ta thấy yolo cho kết quả kém chính xác hơn một vài thuật toán <strong>region based detectors</strong> như Fast RCNN, Faster RCNN.</li>
+  <li>YOLO chỉ có thể nhận dạng 1 object/1 grid cell. Trong trường hợp bức ảnh có nhiều object sát nhau hoặc rất nhỏ dễ khiến nhận dạng sai, thiếu</li>
+  <li>YOLO predict <strong>trực tiếp</strong> các thông tin (w,h) của bounding box =&gt; giá trị tự do. Trong khi đó người ta nhận thấy kích cỡ các object <strong>không quá đa dạng</strong> trong các bộ dataset thường tuân theo những <strong>hình dạng nhất định</strong>. Như ảnh bên dưới, hầu hết ô tô đều có tỷ lệ dài/rộng giống nhau chứ không quá đa dạng:</li>
+</ul>
+
+<hr />
+
+<div class="imgcap">
+    <div>
+        <img src="/assets/7-yolo/bounding_box.jpeg" width="500" />
+    </div>
+    <div class="thecap"> </div>
+</div>
+
+<!-- ############ -->
+<p><a name="-2"></a></p>
+
+<h2 id="2-ý-tưởng-của-yolov2">2. Ý tưởng của YOLOv2.</h2>
+
+<p>Input đầu vào: 416x416 -&gt; tăng độ phân giải, tăng độ chính xác.</p>
+
+<p>YOLOv2 Áp dụng ý tưởng Anchor box của Faster RCNN. Anchor box là các box được <strong>định nghĩa trước</strong>  về kích thước.Thay vì predict ra giá trị (w,h) một cách trực tiếp, YOLOv2 dự đoán <strong>độ sai lệch</strong> của bounding box so với các anchor box.</p>
+
+<p>YOLO2 loại bỏ fully-connected, output được lấy trực tiếp từ Conv Layer cuối.</p>
+
+<p>Output: Trong 1 Grid cell, tất cả bounding box đêu có 1 phân bố xác suất classify của riêng nó. Như vậy YOLO2 giải quyết được vấn đề multi-object trong 1 gird cell</p>
+
+<div class="imgcap">
+    <div>
+        <img src="/assets/7-yolo/yolo2_output.png" width="600" />
+    </div>
+    <div class="thecap"> H2: Output trong YOLO2</div>
+</div>
+
+<!-- ############ -->
+<p><a name="-3"></a></p>
+
+<h2 id="3-chi-tiết-thuật-toán">3. Chi tiết thuật toán:</h2>
+
+<!-- ############ -->
+<p><a name="-3.1"></a></p>
+
+<h3 id="31-thuật-toán">3.1 Thuật toán</h3>
+
+<p>Output có shape: \((S, S, B, ( 4 + 1 + C))\) trong đó:</p>
+<ul>
+  <li>S*S: số grid cells</li>
+  <li>B: số bounding box</li>
+  <li>4: \((t_x, t_y, t_w, t_h)\)</li>
+  <li>1: \(t_o\), hay còn gọi là Objectness - xác suất bounding box đó chứa Object</li>
+  <li>C: số class - phân bố xác suất phân loại object</li>
+</ul>
+
+<p>Với mỗi grid cell, YOLO2 predict ra 5 parameter: \(t_x, t_y, t_w, t_h, t_o\) cho mỗi bounding box, từ đó tính ra các giá trị (x,y,w,h) của bounding box theo công thức dưới:</p>
+
+<div class="imgcap">
+    <div>
+        <img src="/assets/7-yolo/yolo_2_process_output.png" width="600" />
+    </div>
+    <div>
+        <img src="/assets/7-yolo/output_process_2.jpeg" width="400" />
+    </div>
+        <div class="thecap"> H2: YOLO2 output compute </div>
+</div>
+<hr />
+
+<div align="center"> <i> H.2 YOLO2 output compute</i></div>
+
+<p>Để dễ hiểu, mình sẽ giải thích lại:</p>
+<ul>
+  <li>tọa độ x của Bbox : \(b_x = \sigma(t_x) + c_x\). Trong đó \(c_x, c_y\) là tọa độ của góc trái_trên của cell,</li>
+  <li>\(\sigma\) là hàm sigmoid trong machine learning, hay được dùng là activate_function trong deep learning</li>
+  <li>\((p_w, p_h)\) là thông số anchor box</li>
+</ul>
+
+<!-- ############ -->
+<p><a name="-3.2"></a></p>
+
+<h3 id="32-xác-định-thông-số-các-anchor">3.2 Xác định thông số các Anchor</h3>
+
+<p><strong>Anchor box</strong>: Trong 1 bộ dataset về object detect, tác giả lấy ra tất cả (w,h) ground_truth của mọi object. Sau đó, phân cụm bằng K-mean và tác giả nhận thấy rằng có thể chia đống (w,h) này thành 5 cụm. Mỗi cụm ta lấy (w,h) của center_point. Như vậy ta thu được 5 Anchor box.</p>
+
+<p>Số lượng Anchor bằng Box number (B) - 1 chiều trong output. B thường bằng 5</p>
+
+<div class="imgcap">
+    <div>
+        <img src="/assets/7-yolo/kmean.jpeg" width="300" />
+    </div>
+    <div class="thecap"> H2:  Dùng Kmean để phân cụm các cặp (w,h) ground_truth có trong 1 dataset
+    </div>
+</div>
+
+<p>Thường thì khi code lại, chúng ta không nên mất thời gian cho việc tính Anchor box mà các anchor box này đã được tác giả tính toán sẵn, ta có thể tìm trên mạng. Kích cỡ anchor box này được quy chuẩn theo kích cỡ của 1 grid cell. Top 5 Anchor Box mình thường dùng khi ảnh được chia thành grids \(S*S = 13 * 13\) là:</p>
+
+\[[[1.08,1.19],  [3.42,4.41],  [6.63,11.38],  [9.42,5.11],  [16.62,10.52]]\]
+
+<!-- ############ -->
+<p><a name="-3.3"></a></p>
+
+<h3 id="33-loss-function">3.3 Loss function</h3>
+<p>Loss function của YOLO-v2 không khác YOLO, về cơ bản Loss là sự kết hợp bởi 5 loss thành phần (giống YOLO):</p>
+<ul>
+  <li>Phần 1: Loss về vị trí toạ độ (x,y) tại những ô có tồn tại object.</li>
+  <li>Phần 2: Loss về kích thước object (w,h) tại những ô có tồn tại object.</li>
+  <li>Phần 3: Loss về confidence_score tại những ô có tồn tại object.</li>
+  <li>Phần 4: Loss về confidence_score tại những ô không tồn tại object.</li>
+  <li>Phần 5: Loss xác suất phân loại Class tại những ô có tồn tại object.</li>
+</ul>
+
+<p>Nhìn vào Loss của yolo 1 ta phần nào hiểu được, sang phần tiếp theo đọc code bạn sẽ dễ hiểu hơn.</p>
+<div class="imgcap">
+    <div>
+        <img src="/assets/6-yolo/loss.jpeg" width="800" />
+    </div>
+    <div class="thecap">H2: Yolo loss function</div>
+</div>
+<hr />
+
+<h2 id="kết-thúc">Kết thúc</h2>
+<p>Vậy là post 2, mình đã kết thúc bài viết về lý thuyết thuật toán YOLO. Trong bài tiếp theo, mình sẽ hướng dẫn code lại thuật toán YOLO2 cho bài toán face detect.</p>
+:ET

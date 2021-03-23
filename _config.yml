@@ -1,30 +1,14 @@
-plugins:  
-    - jekyll-paginate
-    - jekyll-redirect-from
+# plugins:  
+#     - jekyll-paginate
+#     - jekyll-redirect-from
 
+# Build settings
 markdown: kramdown
+permalink: pretty
+future: true
+highlighter: rouge
+linenos: true
 kramdown:
-    highlighter: rouge
-    syntax_highlighter_opts:
-        block:
-            line_numbers: true
-
-# More › http://kramdown.gettalong.org/quickre...
-# Options › http://kramdown.gettalong.org/options...
-# kramdown:
-#   input: GFM
-#   # https://github.com/jekyll/jekyll/pull...
-#   syntax_highlighter: rouge
-
-#   # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_...
-#   # span, block element options fall back to global
-#   syntax_highlighter_opts:
-#     # Rouge Options › https://github.com/jneen/rouge#full-o...
-#     css_class: 'background'
-#     #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
-#     span:
-#       line_numbers: false
-#     block:
-#       line_numbers: true
-# #       start_line: 1
-
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge

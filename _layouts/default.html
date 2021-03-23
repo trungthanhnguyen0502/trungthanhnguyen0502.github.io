@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
-<title>Khoa học dữ liệu</title>
+<title> AI Blog - Trung Thanh Nguyen </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
@@ -18,22 +18,21 @@
 <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 <link rel="icon" type="image/jpg" href="/assets/images/logo.jpg" sizes="32x32">
-<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<link rel="canonical" href="https://trungthanhnguyen.github.io"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="author" content="Phạm Đình Khánh" />
+<meta name="author" content="Nguyễn Thành Trung" />
 <meta property="og:title" content="" />
-<meta property="og:site_name" content="Khanh's blog" />
-<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:site_name" content="AI Blog - Trung Thanh Nguyen" />
+<meta property="og:url" content="https://trungthanhnguyen.github.io" />
 <meta property="og:description" content="" />
 
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="" />
 
 
-<meta property="article:author" content="Khanh" />
+<meta property="article:author" content="Trung" />
 <meta property="article:section" content="" />
 
-<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
 <style>
 	
 </style>
@@ -78,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <style>
 body {
-  padding: 0 7.5%;
+  padding: 0 5%;
 }
 </style>
 
@@ -96,12 +95,12 @@ body {
 		<div class="row">
 			<div class="col-md-2 hidden-xs hidden-sm">
 				<a  href="/">
-					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/page_layout_images/trung-avatar.png"/> </a>
 				<br>
 				<nav>
 					<div class="header">Latest</div>
 					{% for post in site.posts %}
-					<li><a style="text-align: left; color: #074B80"  href="{{post.url}}">{{post.title}}</a></li>
+					<li><a style="text-align: left; color: #074B80; font-size: 12px"  href="{{post.url}}">{{post.title2}}</a></li>
 					{% endfor %}
 				</nav>
 			</div>
@@ -110,7 +109,7 @@ body {
 					<div class = "container-fluid">
 						<div class = "navbar-header">
 							<a class="navbar-brand" href="/">
-								<p style="color:#FFF">Khoa học dữ liệu - Khanh's blog</p>
+								<p style="color:#FFF">AI Blog - Trung Thanh Nguyen</p>
 							</a>
 							<button class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 								<span class="icon-bar"></span>
@@ -122,11 +121,10 @@ body {
 							<ul class="nav navbar-nav">
 								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
 								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
-								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
-								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
-								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
-								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
-								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+								<li><a href="/review"><span style="color: #fff"> Review and Sharing </span></a></li>
+								<li><a href="/computer_vision"><span style="color: #fff">Computer Vision</span></a></li>
+								<li><a href="/nlp"><span style="color: #fff">NLP</span></a></li>
+								<li><a href="/other"><span style="color: #fff"> Other </span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -140,29 +138,22 @@ body {
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">
 				<a  href="/">
-					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/page_layout_images/logo.jpg" /> </a>
 				<br>
 				<nav>
-					<div class="header">Khanh's site</div>
-					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<div class="header">My site</div>
+					<li><a style="text-align: left; color: #074B80"  href=""> AI Blog - Trung Thanh Nguyen</a></li>
+					<li><a style="text-align: left; color: #074B80"  href=""> Forum: Vietnam AI Link Sharing  </a></li>
+					<li><a style="text-align: left; color: #074B80"  href=""> My Kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href=""> My Github</a></li>
 					<br>
-					<div class="header">other's site</div>
+					<!-- <div class="header">other's site</div>
 					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
 					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
 					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
 					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
-					<br>
-					<div class="header">Khóa học</div>
-					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
-					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+					<br> -->
+
 				</nav>
 			</div>
 		</div>

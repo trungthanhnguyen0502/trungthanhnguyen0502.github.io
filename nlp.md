@@ -2,8 +2,6 @@
 layout: default
 title: Home
 ---
-# Home page
+<!-- # Home page -->
 
-List of blog posts
-
-<div>{% include home.html %}</h1>
+<!-- <div>{% include home.html %}</h1> -->

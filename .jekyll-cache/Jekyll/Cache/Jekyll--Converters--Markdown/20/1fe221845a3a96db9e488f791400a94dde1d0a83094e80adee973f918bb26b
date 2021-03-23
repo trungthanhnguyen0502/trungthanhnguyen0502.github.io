@@ -1,0 +1,91 @@
+I"�<h1 id="1-giới-thiệu-về-google-colab">1. Giới thiệu về Google Colab</h1>
+
+<p>Ngày nay, để học và thực hành với các model trong deep learning, không cần phải train các model trên máy tính cá nhân hay phải sắm những chiếc GPU đắt tiền, ta hoàn toàn có thể sử dụng các hệ thống cloud computing như của google, amazon và 1 vài hệ thống khác. Hôm nay mình sẽ hướng dẫn train model với GPU của google Colab.</p>
+
+<p>Nói qua về Google Colab cho những bạn mới làm quen, Google Colab cung cấp Colaboratory notebooks - 1 dạng tương tự như jupyter notebook, cho chúng ta khả năng tính toán mạnh tương đương với Tesla K80 GPU. Khi bạn tạo 1 notebook, Colab sẽ tạo 1 máy ảo với đầy đủ những thứ cần thiết như thư mục, package, python library cần thiết. Google Colab hỗ trợ khá toàn diện các thư viện trong python, phiên bản mới nhất của tensoflow, keras, PyTorch, cv2 … Lưu ý là bạn chỉ có thể train tối đa 12 tiếng liên tục. Vậy nên khi code nhớ lưu model trong quá trình train tránh việc mất mạng lại phải train lại từ đầu.</p>
+
+<div class="imgcap">
+<div>
+   <img src="/assets/2-colab/tesla-gpu.png" width="500" />
+</div>
+<div class="thecap">H1: Tesla K80 GPU - GPU bạn được sử dụng Free trên google colab </div>
+</div>
+<hr />
+
+<h1 id="2-tiến-hành-cài-đặt">2. Tiến hành cài đặt.</h1>
+<h2 id="21-tạo-notebook">2.1 Tạo notebook</h2>
+
+<ol>
+  <li>
+    <p>Vào Drive của bạn, tạo 1 thư mục bất kì, (VD: AI_COLAB ), nhảy vào thư mục</p>
+  </li>
+  <li>
+    <p>Chuột phải, chọn <strong>More</strong>  \(\longrightarrow\) Colaboratory</p>
+  </li>
+  <li>
+    <p>Như vậy chúng ta đã tạo ra 1 notebook trên google colab rồi</p>
+  </li>
+</ol>
+
+<div class="imgcap">
+<div>
+   <img src="/assets/2-colab/colab-create.jpeg" width="400" />
+</div>
+<div class="thecap">H2: Tạo notebook google colab trên drive </div>
+</div>
+<hr />
+
+<h2 id="22-cài-đặt-môi-trường-và-gpu">2.2 Cài đặt môi trường và GPU</h2>
+<p>Hãy mở notebook vừa tạo lên, mặc định notebook chạy với CPU. Nếu bạn muốn đổi sang GPU: Edit \(\longrightarrow\) Notebook Settings \(\longrightarrow\) chọn python version (mặc định python3) và chọn Hardware là GPU \(\longrightarrow\) OK</p>
+
+<hr />
+
+<div class="imgcap">
+<div>
+   <img src="/assets/2-colab/notebook-setting.png" width="400" />
+</div>
+<div class="thecap">H3: Setting GPU trên colab notebook </div>
+</div>
+<hr />
+
+<h3 id="23-kết-nối-colab-với-drive">2.3 Kết nối Colab với drive</h3>
+
+<p>Mặc định Colab notebook sẽ không có quyền truy cập, đọc ghi bất kì file nào trên Drive. Tuy nhiên trong thực tế, khi train model ta cần 1 nơi chứa dataset dùng để train model. Thường thì người ta sẽ chứa dataset tại Drive. Việc này không bắt buộc nhưng cần thiết nếu bạn có 1 dataset lớn.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/content/drive'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Khi run 2 dòng code này, trên notebook sẽ xuất hiện 1 đường link đi kèm với 1 ô nhập input. Hãy click vào link, tiến hành cấp quyền truy cập Drive cho Colab theo hướng dẫn. Sau khi tiến hành cấp quyền xong sẽ hiện ra 1 đoạn token. Copy token đó và điền vào ô input trên notebook, nhấn Enter. Như vậy bạn đã hoàn thành việc cấp quyền cho google colab được phép truy cập vào drive của bạn (quyền đọc và ghi dữ liệu).</p>
+
+<p>Để thấy được những folder, file đã được add từ drive vào môi trường máy ảo này, mở cửa sổ bên trái, click vào Files \(\longrightarrow\) Refresh, bạn sẽ thấy Drive của bạn đã được thêm vào working directory</p>
+
+<h3 id="24-run-code">2.4 Run code</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/content/drive'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">keras.applications.inception_v3</span> <span class="kn">import</span> <span class="n">InceptionV3</span>
+
+<span class="n">inception</span> <span class="o">=</span> <span class="n">InceptionV3</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s">"imagenet"</span><span class="p">,</span> <span class="n">include_top</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">inception</span><span class="p">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">get_default_graph</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p>Như vậy, bạn đã có thể run code, train model như bình thường, dịch vụ này của google colab khá hay và tiện, thích hợp nhất với đứa nghèo không có tiền mua GPU hay thuê cloud GPU như mình :)) .</p>
+:ET

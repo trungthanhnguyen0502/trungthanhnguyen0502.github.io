@@ -1,0 +1,103 @@
+I"-<div>
+<ul>
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/deep%20learning/2020/03/12/p9.C%C3%86-b%C3%A1%C2%BA-n-v%C3%A1-GAN.html">Bài 9: GAN - Cơ bản về GAN trong Deep learning</a></h2>
+		<br />
+		<p>
+		1. Các khái niệm GAN là viết tắt “Generative Adversary Networks”, hướng tới việc sinh ra dữ liệu mới sau quá trình học. GAN có thể tự sinh ra một khuôn mặt mới, một con người, một đoạn văn, chữ viết, bản nhạc giao hưởng hay những thứ tương tự thế. Thế làm cách nào để GAN học và làm được điều đó, chúng ta cần phải điểm qua một vài khái niệm. Discriminative model...
+		</p>
+		<a href="/deep%20learning/2020/03/12/p9.C%C3%86-b%C3%A1%C2%BA-n-v%C3%A1-GAN.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>12 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/computer%20vision/2020/03/11/p8.Code-l%C3%A1%C2%BA-i-yolov2.html">Bài 8: Cùng code YOLOv2 - YOLO tutorial P3</a></h2>
+		<br />
+		<p>
+		Tổng quan: - 1. Tiền xử lí dữ liệu 1.1 Đọc hiểu annotated data 1.2 Tiền xử lí trong utils.py 2. Kiến trúc model 3. Loss function 4. Hậu xử lí output H1: Kết qủa thu được Trong hai bài trước, mình đã viết về thuật toán YOLO và YOLO_v2. Nhưng đọc thuật toán suông thì khó hiểu. Để hiểu sâu hơn, cách tốt nhất là cùng bắt tay vào code. Mình sẽ code yolo...
+		</p>
+		<a href="/computer%20vision/2020/03/11/p8.Code-l%C3%A1%C2%BA-i-yolov2.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>11 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/computer%20vision/2020/03/11/p7.yolo2.html">Bài 7: Object detect với YOLO-V2 - YOLO tutorial P2</a></h2>
+		<br />
+		<p>
+		1. Vấn đề của YOLO 2. Ý tưởng YOLO-v2 3. Chi tiết thuật toán 3.1 Thuật toán 3.2 Cách xác định Anchor box 3.3 Loss function 1. Vấn đề của YOLO Trong bài trước, mình đã nói chi tiết về thuật toán yolo - thuật toán mạnh mẽ để giải quyết vấn đề real-time của bài toán object detect. Tuy nhiên, yolo vẫn có một vài nhược điểm: Khi so sánh kết quả trong các...
+		</p>
+		<a href="/computer%20vision/2020/03/11/p7.yolo2.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>11 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/computer%20vision/2020/03/11/p6.yolo1.html">Bài 6: Object detect với YOLO - YOLO tutorial P1</a></h2>
+		<br />
+		<p>
+		Mục lục: Giới thiệu 1. Tư tưởng của YOLO 2. Chi tiết thuật toán YOLO 3. Loss function của YOLO Giới thiệu Trong lĩnh vực computer vision, có rất nhiều chủ để, bài toán mà con người đang cố gắng giải quyết tối ưu: bài toán classify (phân loại) bài toán detect (xác định vị trí) ( detect + classify = recognize) bài toán semantic segmentation (phân đoạn ngữ nghĩa) bài toán style transfer. Ngoài...
+		</p>
+		<a href="/computer%20vision/2020/03/11/p6.yolo1.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>11 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/computer%20vision/2020/03/11/p4.-Visualize-c%C3%83-c-filter-trong-m%C3%A1%C2%BA-ng-CNN.html">Bài 5. Visualize các filter trong mạng CNN</a></h2>
+		<br />
+		<p>
+		1. Ý tưởng thuật toán 2. Code thôi H1 Khi làm việc với các deep learning, đặc biệt với các CNN model, ta biết rằng tại mỗi layer với các filter có khả năng nhận dạng từng loại đặc trưng khác nhau trong ảnh input. Càng về các layer cuối, thông tin mà model thu được từ input sẽ được trìu tượng hóa cao hơn (hay trích xuất thông tin ở mức phức tạp hơn)....
+		</p>
+		<a href="/computer%20vision/2020/03/11/p4.-Visualize-c%C3%83-c-filter-trong-m%C3%A1%C2%BA-ng-CNN.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>11 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/deep%20learning/computer%20vision/2020/03/10/p5.Style-transfer.html">Bài 4: Thuật toán style transfer</a></h2>
+		<br />
+		<p>
+		1 Thuật toán 1.1 Content feature 1.2 Style feature 2 Thực hành code 2.1 Chuẩn bị 2.2 Gõ code nào 2.3 Result Bạn nghĩ sao về một bức ảnh chụp (máy ảnh) Hà Nội nhưng lại mang phong cách tranh của Bùi Xuân Phái :D. Với sự ra đời của thuật toán Style Transfer, chuyện đó là hoàn toàn có thể. Dưới đây là sản phẩm của mình: H1: Kết qủa của mình thu được...
+		</p>
+		<a href="/deep%20learning/computer%20vision/2020/03/10/p5.Style-transfer.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>10 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/deep%20learning/machine%20learning/2020/03/10/p3.-Entropy-l%C3%A0-g%C3%AC.html">Bài 3: Entropy là gì ?</a></h2>
+		<br />
+		<p>
+		H1: Lý thuyết thông tin 1. Nguồn gốc entropy 1.1 Entropy nghĩa là gì 1.2 Nguồn gốc 2. Chi tiết về entropy 2.1 Mã hóa thông tin 2.2 Kích cỡ mã hóa trung bình 2.3 Kích cỡ mã hóa trung bình nhỏ nhất 2.4 Tính chất entropy 3. Tài liệu tham khảo 1. Cơ bản về lý thuyết thông tin và khái niệm entropy 1.1 Entropy nghĩa là gì? Ý tưởng về Entropy ban đầu...
+		</p>
+		<a href="/deep%20learning/machine%20learning/2020/03/10/p3.-Entropy-l%C3%A0-g%C3%AC.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>10 Mar 2020</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2020/03/08/p1.-Train-model-v%E1%BB%9Bi-GPU-c%E1%BB%A7a-Google-Colab.html">1. Train model với GPU Google Colab</a></h2>
+		<br />
+		<p>
+		1. Google Colab Làm việc với Deep Learning nghĩa là bạn phải nghiên cứu và xây dựng các model, đòi hỏi máy tính phải có khả năng tính toán lớn. Quá trình training model - hay huấn luyện mô hình thường cần tới GPU. Ngày nay, không nhất thiết phải sắm máy tính với GPU đắt tiền, ta hoàn toàn có thể đăng kí các dịch vụ Cloud Computing của Google, Amazon và nhiêù nhà...
+		</p>
+		<a href="/2020/03/08/p1.-Train-model-v%E1%BB%9Bi-GPU-c%E1%BB%A7a-Google-Colab.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>08 Mar 2020</strong></span>
+	  </div>
+	
+  
+</ul>
+
+</div>
+:ET
