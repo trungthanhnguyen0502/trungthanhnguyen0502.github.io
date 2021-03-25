@@ -3,6 +3,10 @@
 #     - jekyll-redirect-from
 
 # Build settings
+
+baseurl: /
+url: https://trungthanhnguyen0502.github.io
+
 markdown: kramdown
 permalink: pretty
 future: true
