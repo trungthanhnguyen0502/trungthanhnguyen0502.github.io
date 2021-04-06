@@ -1,5 +1,5 @@
 /*code.less override boostrap*/
-pre, pre code {
+/* pre, pre code {
   padding: 0 3px 2px;
   #font > #family > .monospace;
   background-color: black;
@@ -8,7 +8,7 @@ pre, pre code {
   .border-radius(3px);
   border: transparent;
   padding-right: 15px;
-}
+} */
 
 /*********************************************/
 img.gigantic {
