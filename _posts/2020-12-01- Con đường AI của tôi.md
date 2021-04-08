@@ -134,7 +134,7 @@ Mình thường hay update các paper, thuật toán mới nhất tại:
 
 Đa số các group AI mình follow là trên nền tảng Facebook. Mình join và follow những kênh sau:
 * [machinelearningcoban](https://www.facebook.com/groups/machinelearningcoban) - có thể nói đây là group AI sôi động nhất Việt Nam hiện nay. Nơi hỏi đáp, chia sẻ, trao đổi, tuyển dụng...
-* [VietNam AI Link Sharing](https://www.facebook.com/groups/VietnamAiLlinkSharing) - hơi khác một chút, group này tập trung vào chia sẻ kiến thức. Ưu điểm: bài viết chọn lọc, chất lượng cao và content được kiểm duyệt, review trước khi up. Vietnam AI Link Sharing Community là nơi chia sẻ và cập nhật các thuật toán, paper, bài viết, blog, github repository, cuộc thi trong lĩnh vực AI-Machine Learning-Deep Learning.
+* [VietNam AI Link Sharing](https://www.facebook.com/groups/vietnam.ai.link.sharing.community) - hơi khác một chút, group này tập trung vào chia sẻ kiến thức. Ưu điểm: bài viết chọn lọc, chất lượng cao và content được kiểm duyệt, review trước khi up. Vietnam AI Link Sharing Community là nơi chia sẻ và cập nhật các thuật toán, paper, bài viết, blog, github repository, cuộc thi trong lĩnh vực AI-Machine Learning-Deep Learning.
 * [MontrealAI](https://www.facebook.com/groups/MontrealAI/) 
 * [Data Science & Big Data Vietnam](https://www.facebook.com/groups/870665749718859) - 1 group lớn, khá sôi động nhưng content bị loãng bởi các tin rác, bài đăng thiếu chuyên nghiệp hoặc các nội dung không liên quan.
 * [Cộng đồng xử lý ngôn ngữ tự nhiên](https://www.facebook.com/groups/vietnlp) - chuyên về NLP hơn

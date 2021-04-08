@@ -222,7 +222,7 @@ plot_img(result, size=(20,10))
 
 Như vậy, chỉ với vài dòng code ta đã có thể ghép 2 ảnh lại với nhau. Ảnh kết quả nhìn cũng khá hợp lý đúng không. Thực ra nếu để ý kĩ, màu sắc giữa 2 phần được ghép vào nhìn có chút sai khác nhau. Trong thực tế, người ta phải dùng các phương pháp hậu xử lí để khắc phục tình trạng này. Tuy nhiên do thời lượng bài viết mình xin phép dừng lại tại đây. Cảm ơn các bạn đã đọc bài viết :D
 
-*Hãy tham gia group: [Vietnam Ai Llink Sharing ](https://www.facebook.com/groups/VietnamAiLlinkSharing) để được tiếp cận các bài viết hay nhất* :) . 
+*Hãy tham gia group: [Vietnam Ai Llink Sharing ](https://www.facebook.com/groups/vietnam.ai.link.sharing.community) để được tiếp cận các bài viết hay nhất* :) . 
 # 3. Tham khảo:
 1. [https://docs.opencv.org - Introduction to SIFT (Scale-Invariant Feature Transform)](https://docs.opencv.org/master/da/df5/tutorial_py_sift_intro.html)
 
