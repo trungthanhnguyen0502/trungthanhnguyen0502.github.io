@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "[GAN series] p2 - Chiến lược train GAN"
-title2: "[GAN series] p2 - Chiến lược train GAN"
+title: "[GAN series] p2. Chiến lược train GAN"
+title2: "[GAN series] p2. Chiến lược train GAN"
 tag: [gan]
 category: [computer_vision]
 author: trungthanhnguyen

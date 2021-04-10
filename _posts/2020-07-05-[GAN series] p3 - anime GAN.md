@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "[GAN series] p3 - Anime GAN"
-title2: "[GAN series] p3 - Anime GAN"
+title: "[GAN series] p3. Anime GAN"
+title2: "[GAN series] p3. Anime GAN"
 tag: [gan]
 category: [computer_vision]
 author: trungthanhnguyen

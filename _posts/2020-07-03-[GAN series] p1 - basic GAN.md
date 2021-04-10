@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "[GAN series] p1 - GAN cơ bản"
-title2: "[GAN series] p1 - GAN cơ bản"
+title: "[GAN series] p1. GAN cơ bản"
+title2: "[GAN series] p1. GAN cơ bản"
 tag: [gan]
 category: [computer_vision]
 author: trungthanhnguyen

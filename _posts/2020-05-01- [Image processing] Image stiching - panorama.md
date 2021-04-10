@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Image Stitching - thuật toán đằng sau công nghệ ảnh Panorama 
-title2: Image Stitching - Panorama
+title: "[Image processing] Image Stitching - thuật toán đằng sau công nghệ ảnh Panorama"
+title2: "[Image processing] Image stiching - Panorama"
 tag: [panorama, image_stitching, image_processing]
 category: [image_processing]
 author: trungthanhnguyen

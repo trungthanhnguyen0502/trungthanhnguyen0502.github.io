@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Speech processing (P1)
-title2: Speech processing (1)
+title: "[Speech] p1. Cơ bản về xử lí giọng nói" 
+title2: "[Speech] p1. Cơ bản về xử lí giọng nói" 
 tag: [speech, voice]
 category: [speech_processing, voice]
 author: trungthanhnguyen

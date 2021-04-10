@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Speech processing 2 - Feature extraction MFCC
-title2: Speech processing (2)
+title: "[Speech] p2. Feature extraction MFCC"
+title2: "[Speech] p2. Feature extraction MFCC"
 tag: [speech, voice]
 category: [speech_processing, voice]
 author: trungthanhnguyen
