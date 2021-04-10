@@ -5,10 +5,12 @@ title2: "[GAN series] p3 - Anime GAN"
 tag: [gan]
 category: [computer_vision]
 author: trungthanhnguyen
-summary: ""
+summary: "Trong hai bài trước, mình đã nói qua về khái niệm GAN và thực hành GAN với bộ dataset đơn giản: Mnist. Trong bài này, mình sẽ tiến hành code một GAN phức tạp hơn, trên dataset phức tạp hơn: bộ chân dung các nhân vật Anime."
 ---
 
 ![](https://images.viblo.asia/f23dba5f-e614-4397-944b-ff22d17b327c.png)
+
+*Note: bài này trước đây đã được mình code với keras năm 2019 trên Viblo. Gần đây, do sự tiện dụng và quen tay với Torch hơn, mình đang dần sửa code và nội dung các bài theo Torch.*
 
 # 1. Dataset
 Trong hai bài trước, mình đã nói qua về khái niệm GAN và thực hành GAN với bộ dataset đơn giản: Mnist. Trong bài này, mình sẽ tiến hành code một GAN phức tạp hơn, trên dataset phức tạp hơn: bộ chân dung các nhân vật Anime. Anime Dataset được public trên Kaggle theo link sau: [Kaggle anime-faces](https://www.kaggle.com/soumikrakshit/anime-faces) . Bạn có thể download về máy hoặc code trực tiếp trên Kaggle (bằng cách click vào **New notebook** button)
@@ -19,7 +21,7 @@ Trong bài [GAN series P1](https://trungthanhnguyen0502.github.io/computer_visio
 
 ![](https://images.viblo.asia/27269c25-dc53-4f25-ba16-5c583747156e.png)
  
-# 3. Tiến hành code
+# 3. Code
 Code được mình lưu trên Kaggle theo link sau: [https://www.kaggle.com/trungthanhnguyen0502/gan-anime](https://www.kaggle.com/trungthanhnguyen0502/gan-anime)
 
 
@@ -227,3 +229,8 @@ for epoch in range(epoch_nb):
 Và đây là kết quả chỉ sau 5 phút, khá ổn và giống thật đúng không :D
 
 ![](https://imgur.com/8Ybd7ob.gif)
+
+# 4. Tham khảo
+[https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
+
+[https://www.kaggle.com/soumikrakshit/anime-faces](https://www.kaggle.com/soumikrakshit/anime-faces)
