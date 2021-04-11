@@ -8,9 +8,10 @@ author: trungthanhnguyen
 summary: 
 ---
 
-![](https://images.viblo.asia/03fd5ece-18b2-49fa-8681-14face2d862a.jpg)
 
 # 1. Sơ lược về Text-to-Speech
+![](https://images.viblo.asia/03fd5ece-18b2-49fa-8681-14face2d862a.jpg)
+
 Text to Speech (TTS), hay speech synthesis - tổng hợp tiếng nói là các phương pháp chuyển đổi từ văn bản (text) sang giọng nói - dạng như giọng nói của google translate vậy. Chủ đề này đã được nghiên cứu và sử dụng từ những năm 60 của thế kỉ trước. Những ngày đầu, các hệ thống speech synthesis thường được xây dựng theo cách sau:
 
 + Thu âm từng âm tiết và lưu vào trong database thành 1 tập các audio
@@ -33,7 +34,7 @@ Trước khi đi vào chi tiết kiến trúc tacotron/tacotron2, bạn cần đ
 ![](https://images.viblo.asia/9df93799-4357-4149-9d58-5da611461644.png)
 > Nguồn ảnh: medium.com
 
-Về cơ bản, quy trình biến đổi âm thanh từ time-domain sang frequency-domain theo các bước sau:
+Quy trình biến đổi âm thanh từ time-domain sang frequency-domain theo các bước sau:
 + Chia sóng âm dạng waveform thành 1 tập các đoạn ngắn (~25ms)
 + Trên mỗi đoạn âm thanh đó, biến đổi DCT / FFT để tính ra 1 dãy N magnitude (cường độ) tương ứng với N tần số. (ngoài ra 1 dãy N phase (pha) nhưng phần này thường không dùng tới). Hai bước này được gọi là STFT - Short time furier transform.
 + Như vậy, ta thu được data ở dạng spectrogram có dimension = 2. Chiều ngang là trục thời gian, chiều dọc là tần số, giá trị từng điểm được biểu thị bằng màu sắc - là cường độ tần số tương ứng.
@@ -41,7 +42,7 @@ Về cơ bản, quy trình biến đổi âm thanh từ time-domain sang frequen
 
 Về cơ bản, data âm thanh ở dạng spectrogram, MFCC... khá tương tự ảnh. Trong nhiều bài toán deep learning, ta có dùng các Convolution layer để trích xuất đặc trưng tương tự khi áp dụng với dữ liệu ảnh.
 ## 2.2 Kiến trúc
-Về cơ bản, tacotron và tacotron2 khá giống nhau, đều chia kiến trúc thành 2 phần riêng biệt:
+Tacotron và tacotron2 khá giống nhau, đều chia kiến trúc thành 2 phần riêng biệt:
 + Phần 1:  Spectrogram Prediction Network - được dùng để chuyển đổi chuỗi kí tự (text) sang dạng mel-spectrogram ở  frequency-domain
 + Phần 2: Vocoder - Biến đổi âm thanh từ  mel-spectrogram (frequency-domain) sang waveform (time-domain)
 
