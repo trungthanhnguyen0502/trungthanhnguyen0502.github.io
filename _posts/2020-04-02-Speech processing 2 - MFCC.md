@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "[Speech] p2. Feature extraction MFCC"
-title2: "[Speech] p2. Feature extraction MFCC"
+title: "[Speech] p2. Feature extraction - MFCC"
+title2: "[Speech] p2. Feature extraction - MFCC"
 tag: [speech, voice]
 category: [speech_processing, voice]
 author: trungthanhnguyen
@@ -79,7 +79,9 @@ Như mình đã mô tả ở phần trước, cách cảm nhận của tai ngư�
 
 ![](https://images.viblo.asia/099f99a8-d391-42b9-801c-ddb41753846c.png)
 
-Trước hết, ta bình phương các giá trị trong spectrogram thu được **DFT power spectrum** (phổ công suất). Sau đó, ta áp dụng 1 tập các bộ lọc thông dải **Mel-scale filter** trên từng khoảng tần số (mỗi filter áp dụng trên 1 dải tần xác định). Giá trị output của từng filter là năng lượng dải tần số mà filter đó cover (bao phủ) được. Ta thu được **Mel-scale power spectrum**. Ngoài ra, các filter dùng cho dải tần thấp thường hẹp hơn các filter dùng cho dải tần cao. 
+Trước hết, ta bình phương các giá trị trong spectrogram thu được **DFT power spectrum** (phổ công suất). Sau đó, ta áp dụng 1 tập các bộ lọc thông dải **Mel-scale filter** trên từng khoảng tần số (mỗi filter áp dụng trên 1 dải tần xác định). Giá trị output của từng filter là năng lượng dải tần số mà filter đó cover (bao phủ) được. Ta thu được **Mel spectrogram**.
+
+Ngoài ra, các filter dùng cho dải tần thấp thường hẹp hơn các filter dùng cho dải tần cao. 
 
 # 4. Cepstrum
 ## 4.1 Log
